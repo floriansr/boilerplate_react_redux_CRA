@@ -30,3 +30,24 @@ body {
     border: 5px solid #b59760;
     transition: 0.7s;
 }
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+.ant-menu {
+  color: lightgrey;
+}
+
+.active {
+  color: white;
+}
+
+.ant-carousel .slick-slide img {
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+  object-position: 50% 25%;
+  overflow: hidden;
+}
