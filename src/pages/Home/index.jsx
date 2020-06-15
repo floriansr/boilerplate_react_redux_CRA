@@ -1,10 +1,12 @@
 import React from "react";
+import CarouselImages from "tools/Carousel"
+
 
 const Home = () => {
 
 	return (
 		<>
-			<p>Home page</p>
+			<CarouselImages/>
 		</>
 	);
 };
