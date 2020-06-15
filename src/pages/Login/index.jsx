@@ -1,11 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux"
 
 import { Form, Input, Button, message } from 'antd';
 import Cookies from 'js-cookie'
 
-import { setConnexion } from "../../redux";
+import { setConnexion, setProfile } from "../../redux";
 
 
 
@@ -28,17 +28,20 @@ import { setConnexion } from "../../redux";
 const LogIn = () => {
 	const history = useHistory();
   const dispatch = useDispatch();
+  const { statusSlug } = useParams();
 
 
 
-  const Connexion = ({identifier, password}) => {
+  const Connexion = ({email, password}) => {
 
-    const data = {
-      identifier,
+    const data = {}
+
+    data[statusSlug] = {
+      email,
       password
     }
 
-    fetch('https://api-minireseausocial.mathis-dyk.fr/auth/local', {
+    fetch(`https://form-you-back.herokuapp.com/${statusSlug}s/sign_in.json`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
@@ -46,17 +49,21 @@ const LogIn = () => {
        body: JSON.stringify(data)
     })
 
-    .then(response => response.json())
-    .then(response => {
-            const token = response.jwt
-
-            if (response.statusCode === 400) {
+    .then(response => response.json()
+      .then(user => ({
+            jwt: response.headers.get('Authorization'),
+            user
+      }))
+      )
+    .then(result => {
+            if (!result.jwt) {
               message.error("Check your logs", 3);
             }
             else {
               message.success("Profile well login", 3);
-              Cookies.set('token', token, { expires: 7 })
+              Cookies.set('token',{"jwt":result.jwt, "status":statusSlug}, { expires: 7 })
               dispatch(setConnexion())
+              dispatch(setProfile(result))
               history.push("/")
             }
           })
@@ -87,12 +94,12 @@ const LogIn = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Identifier"
-        name="identifier"
+        label="Email"
+        name="email"
         rules={[
           {
             required: true,
-            message: 'Please input your username or email!',
+            message: 'Please input your email!',
           },
         ]}
       >
