@@ -1,6 +1,4 @@
-import { PROFILE } from "redux/user/userType";
-
-// , MODIFICATE_MY_PROFILE
+import { PROFILE, REMOVE_PROFILE } from "redux/user/userType";
 
 export const setProfile = (data) => {
 	return {
@@ -9,11 +7,9 @@ export const setProfile = (data) => {
 	};
 };
 
-// export const modificateProfile = (username, description) => {
+export const removeProfile = () => {
 
-// 	return {
-// 		type: MODIFICATE_MY_PROFILE,
-// 		username,
-// 		description,
-// 	};
-// };
+	return {
+		type: REMOVE_PROFILE,
+	};
+};

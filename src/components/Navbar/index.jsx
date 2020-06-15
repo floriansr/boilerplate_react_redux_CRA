@@ -6,7 +6,7 @@ import { Menu, Button } from 'antd';
 import {  UserOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie'
 
-import { removeConnexion } from "../../redux";
+import { removeConnexion, removeProfile } from "../../redux";
 
 const { SubMenu } = Menu;
 
@@ -36,6 +36,7 @@ const Navbar = () => {
 		      .then(response =>{ 
 		      	if (response.statusText === "No Content") {
 		      		dispatch(removeConnexion())
+		      		dispatch(removeProfile())
 		      		Cookies.remove('token')
 		      		history.push("/login")
 		     	}

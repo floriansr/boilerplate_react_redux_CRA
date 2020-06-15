@@ -1,6 +1,4 @@
-import { PROFILE } from "redux/user/userType";
-
-// , MODIFICATE_MY_PROFILE
+import { PROFILE, REMOVE_PROFILE } from "redux/user/userType";
 
 const initialState = {
   data: {},
@@ -13,14 +11,11 @@ const userReducer = (state = initialState, action) => {
         ...state,
         data: action.details,
       };
-    // case MODIFICATE_MY_PROFILE:
-    //   return {
-    //     data : {
-    //     ...state.data,
-    //     description: action.description,
-    //     username: action.username,
-    //     }
-    //   };
+    case REMOVE_PROFILE:
+      return {
+        ...state,
+        data: {}
+      };
     default:
       return state;
   }
