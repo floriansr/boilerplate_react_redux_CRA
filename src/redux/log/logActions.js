@@ -1,13 +1,13 @@
-import { CONNEXION, DECONNEXION } from "redux/log/logType";
+import { CONNEXION, DECONNEXION } from 'redux/log/logType';
 
 export const setConnexion = () => {
-	return {
-		type: CONNEXION,
-	};
+  return {
+    type: CONNEXION,
+  };
 };
 
 export const removeConnexion = () => {
-	return {
-		type: DECONNEXION,
-	}
-}
+  return {
+    type: DECONNEXION,
+  };
+};

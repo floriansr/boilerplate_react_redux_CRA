@@ -1,10 +1,10 @@
-import error from "./error.json";
-import home from "./home.json";
+import error from './error.json';
+import home from './home.json';
 
 const en = {
-	...error,
-	...home,
-	/* On concatène tous nos objets JSON en un seul */
+  ...error,
+  ...home,
+  /* On concatène tous nos objets JSON en un seul */
 };
 
 export default en;

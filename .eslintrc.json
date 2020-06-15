@@ -19,7 +19,7 @@
 	"rules": {
 		"react/jsx-props-no-spreading": ["off"],
 		"no-console": ["off"],
-
+		"quotes": [2, "single", { "avoidEscape": true }],
 		"jsx-a11y/label-has-associated-control": [
 			"warn",
 			{
@@ -28,6 +28,10 @@
 				"controlComponents": [],
 				"assert": "nesting"
 			}
-		]
+		],
+		"prettier/prettier": ["error", {
+			"singleQuote": true,
+            "tabWidth": 2
+        }]
 	}
 }

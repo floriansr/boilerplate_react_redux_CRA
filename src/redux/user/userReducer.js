@@ -1,4 +1,4 @@
-import { PROFILE, REMOVE_PROFILE } from "redux/user/userType";
+import { PROFILE, REMOVE_PROFILE } from 'redux/user/userType';
 
 const initialState = {
   data: {},
@@ -14,7 +14,7 @@ const userReducer = (state = initialState, action) => {
     case REMOVE_PROFILE:
       return {
         ...state,
-        data: {}
+        data: {},
       };
     default:
       return state;

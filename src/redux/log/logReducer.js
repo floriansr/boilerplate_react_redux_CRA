@@ -1,4 +1,4 @@
-import { CONNEXION, DECONNEXION } from "redux/log/logType";
+import { CONNEXION, DECONNEXION } from 'redux/log/logType';
 
 const initialState = {
   log: false,
